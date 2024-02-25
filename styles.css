@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+:root {
+    --primary-color: #f44336;
+}
+
+body {
+    margin: 0;
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+h1 {
+    text-align: center;
+    padding: 20px;
+    margin: 0 0 50px;
+    background-color: white;
+}
