@@ -4,6 +4,7 @@ document.querySelector("h1").innerHTML = gameName;
 let numberTries = 5;
 let numberLetters = 6;
 let currentTry = 1;
+// let el = document.querySelector(`.try-${currentTry}`);
 
 let wordToGuess = "";
 let messageArea = document.querySelector(".message")
@@ -82,8 +83,24 @@ function handleGuesses() {
         allTries.forEach((tryDiv) => tryDiv.classList.add("disabled-inputs"));
         guessBtn.style.backgroundColor = "#27303f"
         guessBtn.style.cursor = "no-drop"
-    }else {
-
+    } else {
+        document.querySelector(`.try-${currentTry}`).classList.add("disables-inputs");
+        let currentTryInputs = document.querySelectorAll(`.try-${currentTry} input`);
+        currentTryInputs.forEach((input) => (input.disabled = true));
+        currentTry++;
+        document.querySelector(`.try-${currentTry}`).classList.remove("disables-inputs");
+        let nextTryInputs = document.querySelectorAll(`.try-${currentTry} input`);
+        nextTryInputs.forEach((input) => (input.disabled = false));
+        
+        let el = document.querySelector(`.try-${currentTry}`);
+        if (el) {
+            document.querySelector(`.try-${currentTry}`).classList.remove("disabled-inputs");
+            el.children[1].focus();
+        } else {
+            guessBtn.style.backgroundColor = "#27303f"
+            guessBtn.style.cursor = "no-drop"
+            messageArea.innerHTML = `You Lose The Word Is <span>${wordToGuess}</span>`;
+        }
     }
 }
 
